@@ -20,7 +20,7 @@ export default function Home() {
 
       <nav style={{borderBottom:"1px solid rgba(139,92,246,0.3)", backdropFilter:"blur(10px)", position:"sticky", top:0, zIndex:50}} className="px-8 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src="https://docs.walrus.site/assets/walrus-logo.svg" alt="Walrus" style={{width:"28px", height:"28px"}} onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+          <img src="https://www.walrus.xyz/images/walrus-logo.svg" alt="Walrus" style={{width:"28px", height:"28px"}} onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
           <span className="text-xl font-bold" style={{background:"linear-gradient(90deg, #a78bfa, #60a5fa)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>WalForm</span>
         </div>
         <div className="flex items-center gap-4">
