@@ -1,68 +1,25 @@
-"use client";
-import { useState, useEffect } from "react";
-
-export default function Home() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setVisible(true), 100);
-  }, []);
-
-  const divClass = visible
-    ? "opacity-100 translate-y-0 transition-all duration-700"
-    : "opacity-0 translate-y-10 transition-all duration-700";
-
-  return (
-    <main className="min-h-screen bg-gray-950 text-white overflow-hidden">
-      <nav className="border-b border-gray-800 px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-purple-400">WalForm</h1>
-        <button className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-sm font-medium">
-          Connect Wallet
-        </button>
-      </nav>
-
-      <div className={divClass} style={{maxWidth:"896px", margin:"0 auto", padding:"80px 24px", textAlign:"center"}}>
-
-        <div className="text-8xl mb-6">🦭</div>
-
-        <h2 className="text-5xl font-bold mb-6 text-purple-400">
-          Decentralized Forms on Walrus
-        </h2>
-
-        <p className="text-gray-400 text-xl mb-4">
-          Create forms, collect responses, store everything onchain.
-        </p>
-        <p className="text-gray-500 text-sm mb-10">
-          Powered by Walrus decentralized storage on Sui
-        </p>
-
-        <div className="flex gap-4 justify-center mb-16">
-          <a href="/create">
-            <button className="bg-purple-600 hover:bg-purple-700 px-8 py-4 rounded-xl text-lg font-semibold">
-              Create Form
-            </button>
-          </a>
-          <button className="border border-gray-700 hover:border-purple-500 px-8 py-4 rounded-xl text-lg font-semibold">
-            View Demo
-          </button>
+{/* Feature Cards */}
+        <div className="grid grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <div key={i} style={{background:"rgba(255,255,255,0.03)", border:"1px solid rgba(139,92,246,0.2)", borderRadius:"16px", padding:"28px", transition:"all 0.3s", cursor:"default"}}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(139,92,246,0.6)"; (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0.08)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(139,92,246,0.2)"; (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)"; }}
+            >
+              <div style={{fontSize:"2.5rem", marginBottom:"12px"}}>{f.icon}</div>
+              <h3 style={{fontWeight:700, marginBottom:"8px", fontSize:"16px"}}>{f.title}</h3>
+              <p style={{color:"#6b7280", fontSize:"13px", lineHeight:1.6}}>{f.desc}</p>
+            </div>
+          ))}
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div className="text-3xl mb-3">📝</div>
-            <h3 className="font-bold mb-2">Build Forms</h3>
-            <p className="text-gray-400 text-sm">Multiple field types supported</p>
-          </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div className="text-3xl mb-3">🦭</div>
-            <h3 className="font-bold mb-2">Store on Walrus</h3>
-            <p className="text-gray-400 text-sm">Fully decentralized storage</p>
-          </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-            <div className="text-3xl mb-3">🔐</div>
-            <h3 className="font-bold mb-2">Encrypted</h3>
-            <p className="text-gray-400 text-sm">Private responses with Seal</p>
-          </div>
+        {/* Stats */}
+        <div className="flex justify-center gap-12 mt-16">
+          {[["100%", "Decentralized"], ["0", "Servers"], ["∞", "Forms"]].map(([val, label]) => (
+            <div key={label} className="text-center">
+              <div style={{fontSize:"2rem", fontWeight:800, background:"linear-gradient(135deg, #a78bfa, #60a5fa)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>{val}</div>
+              <div style={{color:"#6b7280", fontSize:"13px"}}>{label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </main>

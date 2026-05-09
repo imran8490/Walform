@@ -14,15 +14,18 @@ export default function CreateForm() {
     setFields([...fields, { id: Date.now(), type, label: "New Field", required: false }]);
   };
 
+  const updateLabel = (id: number, newLabel: string) => {
+    setFields(fields.map((f) => f.id === id ? { ...f, label: newLabel } : f));
+  };
+
   const publishForm = async () => {
     setPublishing(true);
     try {
       const formData = { title, fields, createdAt: Date.now() };
       const id = await uploadToWalrus(formData);
       setBlobId(id);
-      alert("Form published! Blob ID: " + id);
     } catch (err) {
-      alert("Upload failed - check connection");
+      alert("Upload failed");
     }
     setPublishing(false);
   };
@@ -48,7 +51,8 @@ export default function CreateForm() {
             <div key={field.id} className="bg-gray-900 border border-gray-800 rounded-xl p-4">
               <input
                 className="bg-transparent text-white w-full outline-none font-medium"
-                defaultValue={field.label}
+                value={field.label}
+                onChange={(e) => updateLabel(field.id, e.target.value)}
               />
               <p className="text-gray-500 text-sm mt-1">{field.type} field</p>
             </div>
@@ -63,8 +67,10 @@ export default function CreateForm() {
 
         {blobId && (
           <div className="bg-green-900 border border-green-700 rounded-xl p-4 mb-4">
-            <p className="text-green-400 text-sm">Published! Blob ID:</p>
-            <p className="text-white text-xs break-all">{blobId}</p>
+            <p className="text-green-400 text-sm">Published! Share this link:</p>
+            <p className="text-white text-xs break-all mt-1">
+              walform-tau.vercel.app/form/{blobId}
+            </p>
           </div>
         )}
 
@@ -73,7 +79,7 @@ export default function CreateForm() {
           disabled={publishing}
           className="bg-purple-600 hover:bg-purple-700 w-full py-3 rounded-xl font-semibold disabled:opacity-50"
         >
-          {publishing ? "Publishing to Walrus..." : "Publish Form to Walrus"}
+          {publishing ? "Publishing..." : "Publish Form to Walrus"}
         </button>
       </div>
     </main>
