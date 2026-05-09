@@ -1,4 +1,3 @@
-[09/05/2026 18:47] Imrankhan 👾 BITS 🐦 SUI ♻️: "use client";
 import { useState, useEffect } from "react";
 
 export default function Home() {
