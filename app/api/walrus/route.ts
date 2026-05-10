@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const WALRUS_AGGREGATOR = "https://aggregator.walrus-testnet.walrus.space";
 const WALRUS_PUBLISHER = "https://publisher.walrus-testnet.walrus.space";
+const WALRUS_AGGREGATOR = "https://aggregator.walrus-testnet.walrus.space";
 
 export async function GET(request: NextRequest) {
   const blobId = request.nextUrl.searchParams.get("blobId");

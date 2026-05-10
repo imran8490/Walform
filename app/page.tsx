@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -14,84 +15,91 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white overflow-hidden">
+    <main style={{minHeight:"100vh", background:"#050a14", color:"white", fontFamily:"sans-serif", overflowX:"hidden"}}>
 
-      <div style={{position:"fixed", top:"-20%", left:"30%", width:"600px", height:"600px", background:"radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)", pointerEvents:"none"}} />
+      {/* Grid background */}
+      <div style={{position:"fixed", top:0, left:0, width:"100%", height:"100%", backgroundImage:"linear-gradient(rgba(77,216,232,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(77,216,232,0.03) 1px, transparent 1px)", backgroundSize:"60px 60px", pointerEvents:"none", zIndex:0}} />
 
-      <nav style={{borderBottom:"1px solid rgba(139,92,246,0.3)", backdropFilter:"blur(10px)", position:"sticky", top:0, zIndex:50}} className="px-8 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <img src="https://raw.githubusercontent.com/MystenLabs/walrus/main/docs/assets/walrus-logo.svg" alt="Walrus" style={{width:"28px", height:"28px"}} onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-          <span className="text-xl font-bold" style={{background:"linear-gradient(90deg, #a78bfa, #60a5fa)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>WalForm</span>
+      {/* Glow */}
+      <div style={{position:"fixed", top:"-20%", left:"30%", width:"600px", height:"600px", background:"radial-gradient(circle, rgba(77,216,232,0.08) 0%, transparent 70%)", pointerEvents:"none", zIndex:0}} />
+
+      {/* Nav */}
+      <nav style={{position:"sticky", top:0, zIndex:100, padding:"16px 48px", display:"flex", justifyContent:"space-between", alignItems:"center", background:"rgba(5,10,20,0.8)", backdropFilter:"blur(20px)", borderBottom:"1px solid rgba(77,216,232,0.2)"}}>
+        <div style={{display:"flex", alignItems:"center", gap:"10px"}}>
+          <div style={{width:"36px", height:"36px", borderRadius:"10px", background:"linear-gradient(135deg, #4dd8e8, #7c3aed)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"20px"}}>🦭</div>
+          <span style={{fontSize:"22px", fontWeight:800, background:"linear-gradient(90deg, #4dd8e8, #7c3aed)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>WalForm</span>
         </div>
-        <div className="flex items-center gap-4">
-          <a href="/create" className="text-gray-400 hover:text-white text-sm">Create</a>
-          <button style={{background:"linear-gradient(135deg, #7c3aed, #2563eb)", border:"none"}} className="px-4 py-2 rounded-lg text-sm font-medium">
+        <div style={{display:"flex", gap:"32px", alignItems:"center"}}>
+          <a href="/create" style={{color:"rgba(255,255,255,0.5)", textDecoration:"none", fontSize:"14px"}}>Create</a>
+          <button style={{background:"linear-gradient(135deg, #4dd8e8, #2563eb)", border:"none", color:"#050a14", fontWeight:700, padding:"10px 24px", borderRadius:"10px", cursor:"pointer", fontSize:"13px", boxShadow:"0 0 20px rgba(77,216,232,0.3)"}}>
             Connect Wallet
           </button>
         </div>
       </nav>
 
-      <div style={{opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transition:"all 0.8s ease"}} className="max-w-5xl mx-auto px-6 py-24 text-center">
+      {/* Hero */}
+      <div style={{position:"relative", zIndex:1, maxWidth:"1100px", margin:"0 auto", padding:"80px 48px 60px", textAlign:"center", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(30px)", transition:"all 0.8s ease"}}>
 
-        <div style={{display:"inline-block", background:"rgba(139,92,246,0.15)", border:"1px solid rgba(139,92,246,0.4)", borderRadius:"999px", padding:"6px 16px", marginBottom:"24px", fontSize:"13px", color:"#a78bfa"}}>
-          🦭 Built for Walrus Sessions Round 2
+        {/* Badge */}
+        <div style={{display:"inline-flex", alignItems:"center", gap:"8px", background:"rgba(77,216,232,0.1)", border:"1px solid rgba(77,216,232,0.3)", borderRadius:"999px", padding:"8px 20px", fontSize:"12px", color:"#4dd8e8", marginBottom:"40px"}}>
+          ⚡ Built for Walrus Sessions Round 2
         </div>
 
-        <img
-          src="https://docs.walrus.site/assets/walrus-logo.svg"
-          alt="Walrus Logo"
-          style={{width:"120px", height:"120px", margin:"0 auto 24px", display:"block", filter:"drop-shadow(0 0 20px rgba(139,92,246,0.5))"}}
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = "none";
-          }}
-        />
-
-        <h1 style={{fontSize:"clamp(2.5rem, 6vw, 4.5rem)", fontWeight:800, lineHeight:1.1, marginBottom:"24px"}}>
-          <span style={{background:"linear-gradient(135deg, #ffffff, #a78bfa, #60a5fa)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>
-            Decentralized Forms
+        {/* Walrus Image */}
+        <div style={{position:"relative", width:"200px", height:"200px", margin:"0 auto 40px"}}>
+          <div style={{position:"absolute", inset:"-20px", borderRadius:"50%", background:"radial-gradient(circle, rgba(77,216,232,0.2) 0%, transparent 70%)"}} />
+          <div style={{fontSize:"120px", marginBottom:"24px", filter:"drop-shadow(0 0 30px rgba(77,216,232,0.5))"}}>
+  🦭
+</div>
+        </div>
+ {/* Title */}
+        <h1 style={{fontSize:"clamp(3rem, 7vw, 5.5rem)", fontWeight:800, lineHeight:1.0, marginBottom:"24px"}}>
+          <span style={{background:"linear-gradient(135deg, #ffffff, #4dd8e8, #7c3aed)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>
+            Decentralized
           </span>
           <br />
-          <span style={{background:"linear-gradient(135deg, #a78bfa, #60a5fa)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>
-            on Walrus
+          <span style={{background:"linear-gradient(135deg, #4dd8e8, #a5f3fc)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>
+            Forms on Walrus
           </span>
         </h1>
 
-        <p className="text-gray-400 text-xl mb-4 max-w-2xl mx-auto">
+        <p style={{color:"rgba(255,255,255,0.5)", fontSize:"18px", maxWidth:"600px", margin:"0 auto 8px", lineHeight:1.7}}>
           Create forms, collect responses, store everything onchain.
         </p>
-        <p className="text-gray-600 text-sm mb-12">
+        <p style={{color:"rgba(255,255,255,0.25)", fontSize:"13px", marginBottom:"48px"}}>
           Powered by Walrus decentralized storage on Sui blockchain
         </p>
 
-        <div className="flex gap-4 justify-center mb-20">
-          <a href="/create">
-            <button style={{background:"linear-gradient(135deg, #7c3aed, #2563eb)", padding:"14px 32px", borderRadius:"12px", fontSize:"16px", fontWeight:600, border:"none", cursor:"pointer", boxShadow:"0 0 30px rgba(139,92,246,0.4)"}}>
-[09/05/2026 18:47] Imrankhan 👾 BITS 🐦 SUI ♻️: Create Form
-            </button>
+        {/* CTA */}
+        <div style={{display:"flex", gap:"16px", justifyContent:"center", marginBottom:"80px"}}>
+          <a href="/create" style={{background:"linear-gradient(135deg, #4dd8e8, #2563eb)", color:"#050a14", fontWeight:700, padding:"16px 40px", borderRadius:"14px", fontSize:"16px", textDecoration:"none", boxShadow:"0 0 40px rgba(77,216,232,0.3)"}}>
+            Create Form
           </a>
-          <button style={{background:"transparent", padding:"14px 32px", borderRadius:"12px", fontSize:"16px", fontWeight:600, border:"1px solid rgba(139,92,246,0.4)", cursor:"pointer", color:"white"}}>
+          <button style={{background:"transparent", color:"#4dd8e8", fontWeight:600, padding:"16px 40px", borderRadius:"14px", border:"1px solid rgba(77,216,232,0.4)", fontSize:"16px", cursor:"pointer"}}>
             View Demo
           </button>
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
+        {/* Feature Cards */}
+        <div style={{display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:"20px", marginBottom:"60px"}}>
           {features.map((f, i) => (
-            <div key={i} style={{background:"rgba(255,255,255,0.03)", border:"1px solid rgba(139,92,246,0.2)", borderRadius:"16px", padding:"28px", transition:"all 0.3s"}}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(139,92,246,0.6)"; (e.currentTarget as HTMLDivElement).style.background = "rgba(139,92,246,0.08)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.border = "1px solid rgba(139,92,246,0.2)"; (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)"; }}
+            <div key={i} style={{background:"rgba(255,255,255,0.03)", border:"1px solid rgba(77,216,232,0.2)", borderRadius:"20px", padding:"32px", textAlign:"left", transition:"all 0.3s"}}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(77,216,232,0.5)"; (e.currentTarget as HTMLDivElement).style.background = "rgba(77,216,232,0.05)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(77,216,232,0.2)"; (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.03)"; }}
             >
-              <div style={{fontSize:"2.5rem", marginBottom:"12px"}}>{f.icon}</div>
-              <h3 style={{fontWeight:700, marginBottom:"8px", fontSize:"16px"}}>{f.title}</h3>
-              <p style={{color:"#6b7280", fontSize:"13px", lineHeight:1.6}}>{f.desc}</p>
+              <div style={{width:"48px", height:"48px", borderRadius:"12px", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"24px", marginBottom:"16px", background:"rgba(77,216,232,0.1)", border:"1px solid rgba(77,216,232,0.2)"}}>{f.icon}</div>
+              <h3 style={{fontSize:"17px", fontWeight:700, marginBottom:"8px"}}>{f.title}</h3>
+              <p style={{fontSize:"13px", color:"rgba(255,255,255,0.4)", lineHeight:1.7}}>{f.desc}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex justify-center gap-12 mt-16">
-          {[["100%", "Decentralized"], ["0", "Servers"], ["∞", "Forms"]].map(([val, label]) => (
-            <div key={label} className="text-center">
-              <div style={{fontSize:"2rem", fontWeight:800, background:"linear-gradient(135deg, #a78bfa, #60a5fa)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>{val}</div>
-              <div style={{color:"#6b7280", fontSize:"13px"}}>{label}</div>
+        {/* Stats */}
+        <div style={{display:"flex", justifyContent:"center", gap:"64px", padding:"40px", background:"rgba(255,255,255,0.03)", border:"1px solid rgba(77,216,232,0.2)", borderRadius:"24px"}}>
+          {[["100%","Decentralized"],["0","Servers"],["∞","Forms"],["WAL","Powered"]].map(([val, label]) => (
+            <div key={label} style={{textAlign:"center"}}>
+              <div style={{fontSize:"2.5rem", fontWeight:800, background:"linear-gradient(135deg, #4dd8e8, #7c3aed)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"}}>{val}</div>
+              <div style={{fontSize:"12px", color:"rgba(255,255,255,0.3)", marginTop:"4px", letterSpacing:"1px", textTransform:"uppercase"}}>{label}</div>
             </div>
           ))}
         </div>
